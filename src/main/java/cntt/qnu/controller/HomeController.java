@@ -23,7 +23,7 @@ public class HomeController {
 	public String loadIndex(Model model) {
 		List<VatNuoiInfo> list= vatnuoiDao.showList();
 		model.addAttribute("pets",list);
-		return "index";
+		return "client/index";
 	}
 
 
