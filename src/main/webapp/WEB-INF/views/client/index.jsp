@@ -111,6 +111,8 @@
             <div class="product-widget-area">
                 <div class="zigzag-bottom"></div>
                 <div class="container">
+                    Số lượng vật nuôi hiện có:
+                    <h1 id="soluong">${pets.size()}</h1>
                     <div class="row">
                         <c:forEach var="pet" items="${pets}" varStatus="status">
                             <div class="col-md-4 contentPage">
@@ -132,21 +134,38 @@
                                 </div>
                             </div>
                         </c:forEach>
+
+                    </div>
+                    <script type="text/javascript">
+                        $(function() {
+                            var pageSize = 9;
+                            showPage = function(page) {
+                                $(".contentPage").hide();
+                                $(".contentPage").each(function(n) {
+                                    if (n >= pageSize * (page - 1) && n < pageSize * page)
+                                        $(this).show();
+                                });
+                            }
+                            showPage(1);
+                            console.log($("#soluong").html())
+                            var totalRows = $("#soluong").html();
+                            var btnPage = 3;
+                            var iTotalPages = Math.ceil(totalRows / pageSize);
+                            var iTotalPages = Math.ceil(totalRows / pageSize);
+
+                            var obj = $('#pagination').twbsPagination({
+                                totalPages: iTotalPages,
+                                visiblePages: btnPage,
+                                onPageClick: function(event, page) {
+                                    showPage(page);
+                                }
+                            });
+                        });
+                    </script>
+                    <div class="row">
+
                         <ul id="pagination"></ul>
                     </div>
-                    <style>
-                        ///** CSS căn id pagination ra giữa màn hình **///
-                        #pagination {
-                            display: flex;
-                            display: -webkit-flex;
-                            /* Safari 8 */
-                            flex-wrap: wrap;
-                            -webkit-flex-wrap: wrap;
-                            /* Safari 8 */
-                            justify-content: center;
-                            -webkit-justify-content: center;
-                        }
-                    </style>
 
                 </div>
             </div>

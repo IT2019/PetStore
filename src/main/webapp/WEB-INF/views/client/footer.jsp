@@ -89,7 +89,8 @@
 
 <!-- Main Script -->
 <script src="${pageContext.request.contextPath}/template/client/js/main.js"></script>
-
+<!--pagination-->
+<script src="${pageContext.request.contextPath}/template/client/js/jquery.pagination.js"></script>
 <!-- Slider -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/template/client/js/bxslider.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/template/client/js/script.slider.js"></script>
