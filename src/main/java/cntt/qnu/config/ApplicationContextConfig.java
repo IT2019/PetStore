@@ -90,4 +90,8 @@ public class ApplicationContextConfig {
 	public VatNuoiDAO showList() {
 		return new VatNuoiDAOImpl();
 	}
+	@Bean(name = "pet")
+	public VatNuoiDAO findByID() {
+		return new VatNuoiDAOImpl();
+	}
 }

@@ -8,4 +8,5 @@ import cntt.qnu.model.VatNuoiInfo;
 @Transactional
 public interface VatNuoiDAO {
 	public List<VatNuoiInfo> showList();
+	public VatNuoiInfo findById(long vatNuoiId);
 }

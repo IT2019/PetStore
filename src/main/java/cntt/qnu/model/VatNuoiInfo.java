@@ -7,11 +7,12 @@ public class VatNuoiInfo {
 	private String hinhanh;
 	private String mota;
 	private int idloai;
+	private int soluong;
 	public VatNuoiInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public VatNuoiInfo(int id, String tenvatnuoi, int giatien, String hinhanh, String mota, int idloai) {
+	public VatNuoiInfo(int id, String tenvatnuoi, int giatien, String hinhanh, String mota, int idloai ,int soluong) {
 		super();
 		this.id = id;
 		this.tenvatnuoi = tenvatnuoi;
@@ -19,6 +20,7 @@ public class VatNuoiInfo {
 		this.hinhanh = hinhanh;
 		this.mota = mota;
 		this.idloai = idloai;
+		this.soluong= soluong;
 	}
 	public int getId() {
 		return id;
@@ -55,5 +57,12 @@ public class VatNuoiInfo {
 	}
 	public void setIdloai(int idloai) {
 		this.idloai = idloai;
+	}
+	public int getSoluong() {
+		return soluong;
+	}
+
+ 	public void setSoluong(int soluong) {
+		this.soluong = soluong;
 	}
 }
