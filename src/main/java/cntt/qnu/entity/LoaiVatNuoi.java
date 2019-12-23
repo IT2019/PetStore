@@ -10,6 +10,7 @@ import javax.persistence.Table;
 public class LoaiVatNuoi {
 	private int id;
 	private String tenloai;
+	//private String maloai;
 	
 	@Id
 	@Column(name="id")

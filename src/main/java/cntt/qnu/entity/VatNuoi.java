@@ -14,6 +14,7 @@ public class VatNuoi {
 	private String hinhanh;
 	private String mota;
 	private int idloai;
+	private int soluong;
 	
 	@Id
 	@Column(name="id")
@@ -57,6 +58,14 @@ public class VatNuoi {
 	}
 	public void setIdloai(int idloai) {
 		this.idloai = idloai;
+	}
+	@Column(name="so_luong")
+	public int getSoluong() {
+		return soluong;
+	}
+
+	public void setSoluong(int soluong) {
+		this.soluong = soluong;
 	}
 	
 	
