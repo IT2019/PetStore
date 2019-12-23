@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import cntt.qnu.dao.VatNuoiDAO;
 import cntt.qnu.model.CartInfo;
 import cntt.qnu.model.CustomerInfo;
+import cntt.qnu.model.LoaiVatNuoiInfo;
 import cntt.qnu.model.VatNuoiInfo;
 
 @Controller
@@ -24,7 +26,10 @@ public class HomeController {
 	@RequestMapping(value = {"/","/index"})
 	public String loadIndex(Model model) {
 		List<VatNuoiInfo> list= vatnuoiDao.showList();
-		model.addAttribute("pets",list);
+		List<LoaiVatNuoiInfo> loai= vatnuoiDao.loadLoai();
+		List<VatNuoiInfo> list1= vatnuoiDao.getVatNuoiById(3);
+		model.addAttribute("pets",list1);
+		model.addAttribute("loai",loai);
 		return "client/index";
 	}
 	@RequestMapping(value = "/add-to-cart")
@@ -110,6 +115,16 @@ public class HomeController {
 		session.removeAttribute("Cart");
 		
 		return "redirect:/view-cart";
+	}
+
+	@RequestMapping(value = "/getdata", method = RequestMethod.GET)
+	public @ResponseBody String filter(HttpServletRequest request,Model model) {
+		String loai = request.getParameter("loai");
+		String gia = request.getParameter("gia");
+		int price= Integer.parseInt(gia);
+		List<VatNuoiInfo> list1= vatnuoiDao.locTheoLoai(loai,price);
+		model.addAttribute("pets",list1);
+		return "client/index";
 	}
 
 }

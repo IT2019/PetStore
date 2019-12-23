@@ -150,14 +150,27 @@
             <!-- End slider area -->
 
             <!-- filter-->
+
+
             <section>
-                <select name="" id="">
-                    <option value="1000000">Dưới 1 triệu</option>
-                    <option value="2000000">Dưới 2 triệu</option>
-                    <option value="3000000">Dưới 3 triệu</option>
-                    <option value="3000001">Trên 3 triệu</option>
+                <select name="" id="gia">
+                    <option value="-1">Tất cả</option>
+                    <option value="0">Dưới 1 triệu</option>
+                    <option value="1">1tr->2tr</option>
+                    <option value="2">2tr->3tr</option>
+                    <option value="3">Trên 3 triệu</option>
                 </select>
             </section>
+            <section>
+                <select name="" id="loai">
+                    <option value="v.idloai">Tất cả</option>
+                    <c:forEach var="loai" items="${loai}" varStatus="status">
+                        <option value="${loai.id}">${loai.tenloai}</option>
+                    </c:forEach>
+                </select>
+            </section>
+            <!-- <input type="text" id="test" name=""/> -->
+            <button id="btnsearch" name="Tìm">Tìm kiếm</button>
 
             <div class="product-widget-area">
                 <div class="zigzag-bottom"></div>
@@ -226,3 +239,39 @@
             </div>
             <!-- End product widget area -->
             <jsp:include page="/WEB-INF/views/client/footer.jsp" />
+            <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script
+                src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+                integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+                crossorigin="anonymous"></script>-->
+            <script>
+                $(document).ready(function ($) {
+                    $('#btnsearch').on('click',function(e){
+                        e.preventDefault();
+                        sendData();
+                        
+                    });
+                });
+                function sendData(){
+                    let loai= $('#loai').val();
+                    let gia= $('#gia').val();
+                    $.ajax({
+                        type : "GET",
+                        contentType : "application/json",
+                        url : "${pageContext.request.contextPath}/getdata",
+                        data : {
+                            loai : loai,
+                            gia : gia
+                        },
+                        dataType : 'json',
+                        timeout : 100000,
+                        success : function(data) {
+                            console.log("SUCCESS: ", data);
+                            alert("thanh cong");
+                        },
+                        error : function(e) {
+                            console.log("ERROR: ", e);
+                        }
+                    });
+                }
+            </script>

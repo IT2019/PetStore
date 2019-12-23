@@ -19,6 +19,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import cntt.qnu.dao.VatNuoiDAO;
 import cntt.qnu.dao.impl.VatNuoiDAOImpl;
+
 @Configuration
 @ComponentScan(" cntt.qnu.*")
 @EnableTransactionManagement

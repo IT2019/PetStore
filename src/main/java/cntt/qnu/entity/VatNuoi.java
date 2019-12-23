@@ -15,6 +15,7 @@ public class VatNuoi {
 	private String mota;
 	private int idloai;
 	private int soluong;
+	
 	@Id
 	@Column(name="id")
 	public int getId() {
