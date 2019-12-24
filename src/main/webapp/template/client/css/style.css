@@ -105,6 +105,7 @@ body {
     text-transform: uppercase;
     width: 100%;
     z-index: 999;
+    padding-top: 10px;
 }
 
 .logo h1 {
@@ -140,7 +141,7 @@ body {
 }
 
 .cart-amunt {
-    color: #5a88ca;
+    color: #f10f2e;
     font-weight: 700;
 }
 

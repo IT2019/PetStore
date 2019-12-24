@@ -8,33 +8,7 @@
 
         <body>
 
-            <!-- End header area -->
-            <div class="site-branding-area">
-                <div class="container"></div>
-                <div class="row">
-                    <div class="col-sm-10">
-                        <div class="logo">
-                            <h1>
-                                <a href="./"><img src="${pageContext.request.contextPath}/template/client/img/logo.png"></a>
-                            </h1>
-                        </div>
-                    </div>
 
-                    <div class="col-sm-2">
-                        <a href="view-cart">
-                            <div class="shopping-item">
-                                Giỏ hàng<span class="cart-amunt"> $<c:if test="${sessionScope.Cart == null}">0</c:if>
-                                        <c:if test="${sessionScope.Cart != null}">${String.format("%,.0f", sessionScope.Cart.getAmountTotal()) }</c:if></span> <i class="fa fa-shopping-cart"></i>
-                                <span class="product-count"> <c:if test="${sessionScope.Cart == null}">0</c:if>${sessionScope.Cart.getQuantityTotal() }</span>
-                            </div>
-                        </a>
-                        <span>
-                                <a href="checkout" class="li-button li-button-fullwidth li-button-sm"> <span>Thanh toán</span> </a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            </div>
             <jsp:include page="/WEB-INF/views/client/menu.jsp" />
             <jsp:include page="/WEB-INF/views/client/slide.jsp" />
             <!-- filter-->
