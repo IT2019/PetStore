@@ -9,8 +9,10 @@ import cntt.qnu.model.VatNuoiInfo;
 @Transactional
 public interface VatNuoiDAO {
 	public List<VatNuoiInfo> showList();
+	public VatNuoiInfo findById(long vatNuoiId);
 	//public List<VatNuoiInfo> getType(String loai);
 	public List<LoaiVatNuoiInfo> loadLoai();
 	public List<VatNuoiInfo> locTheoLoai(String idloai, int mucgia);
 	public List<VatNuoiInfo> getVatNuoiById(long idvatnuoi);
+
 }

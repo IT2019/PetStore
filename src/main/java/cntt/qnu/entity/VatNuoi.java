@@ -64,9 +64,8 @@ public class VatNuoi {
 		return soluong;
 	}
 
-	public void setSoluong(int soluong) {
+ 	public void setSoluong(int soluong) {
 		this.soluong = soluong;
 	}
-	
 	
 }
