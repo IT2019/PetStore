@@ -57,7 +57,7 @@ public class VatNuoiDAOImpl implements VatNuoiDAO{
 		}
 		else{
 		sql= " Select new " + VatNuoiInfo.class.getName() + "(v.id,v.tenvatnuoi,v.giatien,v.hinhanh,v.mota,v.idloai,v.soluong)" +
-				" from " + VatNuoi.class.getName() + " v " + "Where v.idloai=" + idloai + "AND v.giatien>=" + price + "AND v.giatien<=" + price1;
+				" from " + VatNuoi.class.getName() + " v " + "Where v.idloai=" + idloai + " AND v.giatien>=" + price + " AND v.giatien<=" + price1;
 		}
 		
 		Query query = session.createQuery(sql);
