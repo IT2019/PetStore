@@ -27,8 +27,7 @@ public class HomeController {
 	public String loadIndex(Model model) {
 		List<VatNuoiInfo> list= vatnuoiDao.showList();
 		List<LoaiVatNuoiInfo> loai= vatnuoiDao.loadLoai();
-		List<VatNuoiInfo> list1= vatnuoiDao.getVatNuoiById(3);
-		model.addAttribute("pets",list1);
+		model.addAttribute("pets",list);
 		model.addAttribute("loai",loai);
 		return "client/index";
 	}

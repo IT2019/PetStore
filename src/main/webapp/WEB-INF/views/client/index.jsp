@@ -7,151 +7,37 @@
 
 
         <body>
-            <div class="header-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="user-menu">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                                    <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
-                                    <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
-                                    <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
-                                </ul>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
             <!-- End header area -->
             <div class="site-branding-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="logo">
-                                <h1>
-                                    <a href="./"><img src="${pageContext.request.contextPath}/template/client/img/logo.png"></a>
-                                </h1>
-                            </div>
+                <div class="container"></div>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="logo">
+                            <h1>
+                                <a href="./"><img src="${pageContext.request.contextPath}/template/client/img/logo.png"></a>
+                            </h1>
                         </div>
+                    </div>
 
-                        <div class="col-sm-6">
+                    <div class="col-sm-2">
+                        <a href="view-cart">
                             <div class="shopping-item">
-                                <a href="cart.html">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                                Giỏ hàng<span class="cart-amunt"> $<c:if test="${sessionScope.Cart == null}">0</c:if>
+                                        <c:if test="${sessionScope.Cart != null}">${String.format("%,.0f", sessionScope.Cart.getAmountTotal()) }</c:if></span> <i class="fa fa-shopping-cart"></i>
+                                <span class="product-count"> <c:if test="${sessionScope.Cart == null}">0</c:if>${sessionScope.Cart.getQuantityTotal() }</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End site branding area -->
-
-            <div class="mainmenu-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="navbar-collapse collapse">
-
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="index.html">Trang chủ</a></li>
-                                <li><a href="shop.html">Shop page</a></li>
-                                <li><a href="single-product.html">Single product</a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="#">Category</a></li>
-                                <li><a href="#">Others</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End mainmenu area -->
-            <div class="cart">
-                <li class="hm-minicart">
-                    <div class="hm-minicart-trigger">
-                        <span class="item-icon"></span> <span class="item-text">$<c:if
-                                test="${sessionScope.Cart == null}">0</c:if>${sessionScope.Cart.getAmountTotal() }
-                            <span class="cart-item-count"><c:if
-                                    test="${sessionScope.Cart == null}">0</c:if>${sessionScope.Cart.getQuantityTotal() }</span>
+                        </a>
+                        <span>
+                                <a href="checkout" class="li-button li-button-fullwidth li-button-sm"> <span>Thanh toán</span> </a>
                         </span>
-                    </div> <span></span>
-                    <div class="minicart">
-                        <ul class="minicart-product-list">
-                            <c:forEach items="${sessionScope.Cart.getCartLines()}" var="it" varStatus="i">
-                                <li><a href="single-product.html" class="minicart-product-image"> <img
-                                        src="<c:url value='/template/client/img/${it.getVatNuoiInfo().getHinhanh()}' />"
-                                        alt="cart products">
-                                </a>
-                                    <div class="minicart-product-details">
-                                        <h6>
-                                            <a href="single-product.html">${it.getVatNuoiInfo().getTenvatnuoi()}</a>
-                                        </h6>
-                                        <span>$${it.getVatNuoiInfo().getGiatien()} x
-                                            ${it.getQuantity()}</span>
-                                    </div>
-                                    <button class="close">
-                                        <i class="fa fa-close"></i>
-                                    </button></li>
-                            </c:forEach>
-                        </ul>
-                        <p class="minicart-total">
-                            SUBTOTAL: <span>$<c:if
-                                    test="${sessionScope.Cart == null}">0</c:if>${sessionScope.Cart.getAmountTotal()}</span>
-                        </p>
-                        <div class="minicart-button">
-                            <a href="view-cart" class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                <span>View Full Cart</span>
-                            </a>
-                            <a href="checkout" class="li-button li-button-fullwidth li-button-sm"> <span>Checkout</span>
-                            </a>
-                        </div>
                     </div>
-                </li>
-            </div>
-            <div class="clearfix"> </div>
-            </div>
-            <div class="login_buttons">
-                <div class="check_button"><a href="checkout.html">Check out</a></div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
-            </ul>
-            </li>
-            <div class="slider-area" style="padding-bottom:30px;">
-                <!-- Slider -->
-                <div class="block-slider block-slider4">
-                    <ul class="" id="bxslider-home4">
-                        <li>
-                            <img src="${pageContext.request.contextPath}/template/client/img/h4-slide.png" alt="Slide">
-
-                        </li>
-                        <li><img src="${pageContext.request.contextPath}/template/client/img/h4-slide2.png" alt="Slide">
-
-                        </li>
-                        <li><img src="${pageContext.request.contextPath}/template/client/img/h4-slide3.png" alt="Slide">
-
-                        </li>
-                        <li><img src="${pageContext.request.contextPath}/template/client/img/h4-slide4.png" alt="Slide">
-
-                        </li>
-                    </ul>
                 </div>
-                <!-- ./Slider -->
             </div>
-            <!-- End slider area -->
-
+            </div>
+            <jsp:include page="/WEB-INF/views/client/menu.jsp" />
+            <jsp:include page="/WEB-INF/views/client/slide.jsp" />
             <!-- filter-->
-
-
             <section>
                 <select name="" id="gia">
                     <option value="-1">Tất cả</option>
@@ -175,8 +61,7 @@
             <div class="product-widget-area">
                 <div class="zigzag-bottom"></div>
                 <div class="container">
-                    Số lượng vật nuôi hiện có:
-                    <h1 id="soluong">${pets.size()}</h1>
+                    <h1 id="soluong" style="display: none;">${pets.size()}</h1>
                     <div class="row">
                         <c:forEach var="pet" items="${pets}" varStatus="status">
                             <div class="col-md-4 contentPage">
@@ -245,31 +130,32 @@
                 integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
                 crossorigin="anonymous"></script>-->
             <script>
-                $(document).ready(function ($) {
-                    $('#btnsearch').on('click',function(e){
+                $(document).ready(function($) {
+                    $('#btnsearch').on('click', function(e) {
                         e.preventDefault();
                         sendData();
-                        
+
                     });
                 });
-                function sendData(){
-                    let loai= $('#loai').val();
-                    let gia= $('#gia').val();
+
+                function sendData() {
+                    let loai = $('#loai').val();
+                    let gia = $('#gia').val();
                     $.ajax({
-                        type : "GET",
-                        contentType : "application/json",
-                        url : "${pageContext.request.contextPath}/getdata",
-                        data : {
-                            loai : loai,
-                            gia : gia
+                        type: "GET",
+                        contentType: "application/json",
+                        url: "${pageContext.request.contextPath}/getdata",
+                        data: {
+                            loai: loai,
+                            gia: gia
                         },
-                        dataType : 'json',
-                        timeout : 100000,
-                        success : function(data) {
+                        dataType: 'json',
+                        timeout: 100000,
+                        success: function(data) {
                             console.log("SUCCESS: ", data);
                             alert("thanh cong");
                         },
-                        error : function(e) {
+                        error: function(e) {
                             console.log("ERROR: ", e);
                         }
                     });
