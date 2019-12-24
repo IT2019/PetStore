@@ -20,40 +20,37 @@
 
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-menu">
-                            <h2 class="footer-wid-title">User Navigation </h2>
+                            <h2 class="footer-wid-title">Thông tin</h2>
                             <ul>
-                                <li><a href="#">My account</a></li>
-                                <li><a href="#">Order history</a></li>
-                                <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Vendor contact</a></li>
-                                <li><a href="#">Front page</a></li>
+                                <li><a href="#">Giới thiệu</a></li>
+                                <li><a href="#">Hướng dẫn</a></li>
+                                <li><a href="#">Điều khoản và bảo mật</a></li>
+                                <li><a href="#">Trung tâm hỗ trợ</a></li>
+                                <li><a href="#">Thư viện</a></li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-menu">
-                            <h2 class="footer-wid-title">Categories</h2>
+                            <h2 class="footer-wid-title">Danh mục chính</h2>
                             <ul>
-                                <li><a href="#">Mobile Phone</a></li>
-                                <li><a href="#">Home accesseries</a></li>
-                                <li><a href="#">LED TV</a></li>
-                                <li><a href="#">Computer</a></li>
-                                <li><a href="#">Gadets</a></li>
+                                <li><a href="#">Trang chủ</a></li>
+                                <li><a href="#">Danh sách sản phẩm</a></li>
+                                <li><a href="#">Giỏ hàng</a></li>
+                                <li><a href="#">Thanh toán</a></li>
+                                <li><a href="#">Thư viện</a></li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-newsletter">
-                            <h2 class="footer-wid-title">Newsletter</h2>
-                            <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
-                            <div class="newsletter-form">
-                                <form action="#">
-                                    <input type="email" placeholder="Type your email">
-                                    <input type="submit" value="Subscribe">
-                                </form>
-                            </div>
+                            <h2 class="footer-wid-title">Thông tin liên hệ</h2>
+                            <p>Shop thú cưng trực tuyến Quy Nhơn!</p>
+                            <p>Địa chỉ: 52 Võ Mười, Quy Nhơn, Bình Định</p>
+                            <p>SĐT: 0989xxxxxx</p>
+                            <p>Email: abcd@gmail.com</p>
                         </div>
                     </div>
                 </div>
