@@ -117,11 +117,13 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/getdata", method = RequestMethod.GET)
-	public @ResponseBody String filter(HttpServletRequest request,Model model) {
+	public String filter(HttpServletRequest request,Model model) {
 		String loai = request.getParameter("loai");
 		String gia = request.getParameter("gia");
 		int price= Integer.parseInt(gia);
 		List<VatNuoiInfo> list1= vatnuoiDao.locTheoLoai(loai,price);
+		List<LoaiVatNuoiInfo> listloai= vatnuoiDao.loadLoai();
+		model.addAttribute("loai",listloai);
 		model.addAttribute("pets",list1);
 		return "client/index";
 	}

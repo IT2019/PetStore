@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ page import="java.util.Random,java.text.*"%>
         <!DOCTYPE html>
         <html lang="en">
         <jsp:include page="/WEB-INF/views/client/header.jsp" />
+    
 
 
-
-        <body>
+        <div>
 
             <!-- End header area -->
             <div class="site-branding-area">
@@ -37,26 +38,33 @@
             </div>
             <jsp:include page="/WEB-INF/views/client/menu.jsp" />
             <jsp:include page="/WEB-INF/views/client/slide.jsp" />
+            
+            
             <!-- filter-->
-            <section>
-                <select name="" id="gia">
-                    <option value="-1">Tất cả</option>
-                    <option value="0">Dưới 1 triệu</option>
-                    <option value="1">1tr->2tr</option>
-                    <option value="2">2tr->3tr</option>
-                    <option value="3">Trên 3 triệu</option>
-                </select>
-            </section>
-            <section>
-                <select name="" id="loai">
-                    <option value="v.idloai">Tất cả</option>
-                    <c:forEach var="loai" items="${loai}" varStatus="status">
-                        <option value="${loai.id}">${loai.tenloai}</option>
-                    </c:forEach>
-                </select>
-            </section>
-            <!-- <input type="text" id="test" name=""/> -->
-            <button id="btnsearch" name="Tìm">Tìm kiếm</button>
+            <div id="searchform">
+                <div id="group1">
+                    <label class="lb">Loại vật nuôi</label></br>
+                    <select name="" id="loai" class="dropdown">
+                        <% String type= request.getParameter("loai"); %>
+                        <option value="v.idloai">Tất cả</option>
+                        <c:forEach var="loai" items="${loai}" varStatus="status">
+                            <option value="${loai.id}">${loai.tenloai}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div id="group2">
+                    <label class="lb">Giá vật nuôi</label></br>
+                    <select name="" id="gia" class="dropdown">
+                        <option value="-1" >Tất cả</option>
+                        <option value="0">Dưới 1 triệu</option>
+                        <option value="1">1tr->2tr</option>
+                        <option value="2">2tr->3tr</option>
+                        <option value="3">Trên 3 triệu</option>
+                    </select>
+                </div>
+                <button id="btnsearch" name="Tìm"><i class="fa fa-search"></i> Tìm kiếm</button>
+            </div>
+
 
             <div class="product-widget-area">
                 <div class="zigzag-bottom"></div>
@@ -141,23 +149,6 @@
                 function sendData() {
                     let loai = $('#loai').val();
                     let gia = $('#gia').val();
-                    $.ajax({
-                        type: "GET",
-                        contentType: "application/json",
-                        url: "${pageContext.request.contextPath}/getdata",
-                        data: {
-                            loai: loai,
-                            gia: gia
-                        },
-                        dataType: 'json',
-                        timeout: 100000,
-                        success: function(data) {
-                            console.log("SUCCESS: ", data);
-                            alert("thanh cong");
-                        },
-                        error: function(e) {
-                            console.log("ERROR: ", e);
-                        }
-                    });
+                    window.location.href = "${pageContext.request.contextPath}/getdata/?loai=" + loai +"&gia=" + gia;
                 }
             </script>
