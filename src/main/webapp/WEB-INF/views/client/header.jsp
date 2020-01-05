@@ -28,5 +28,9 @@
             <link rel="stylesheet" href="${pageContext.request.contextPath}/template/client/css/owl.carousel.css">
             <link rel="stylesheet" href="${pageContext.request.contextPath}/template/client/css/style.css">
             <link rel="stylesheet" href="${pageContext.request.contextPath}/template/client/css/responsive.css">
-
+            <style>
+                body {
+                    margin-top: 20px;
+                }
+            </style>
         </head>
