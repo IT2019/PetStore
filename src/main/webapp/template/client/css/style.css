@@ -1,3 +1,5 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
 .floatleft {
     float: left
 }
@@ -1574,4 +1576,45 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 .breadcrumb-content ul li {
     list-style: none;
     padding-right: 15px;
+}
+
+
+/* form search */
+.dropdown {
+    width:110px;
+    border: none;
+    border-bottom: 1px dashed #000;
+    margin-top: 10px;
+    outline:none;
+    background: none;
+    font-size:15px;
+}
+#searchform {
+    background: #d9d9d9;
+    overflow: hidden;
+    width: 430px;
+    height: 95px;
+    margin: 20px auto;
+    border-radius: 20px;
+}
+#btnsearch{
+    background: #015196;
+    border: none;
+    padding: 10px;
+    color: white;
+    border-radius:20px;
+    margin-top:25px;
+}
+.lb{
+    color: #015196;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#group1{
+    float: left;
+    margin: 20px 20px;
+  }
+#group2{
+    float: left;
+    margin: 20px 20px;
 }
