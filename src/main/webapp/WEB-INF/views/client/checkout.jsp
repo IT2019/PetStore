@@ -100,7 +100,7 @@
                             <div class="payment-method">
                                 <div class="payment-accordion">
                                     <div class="order-button-payment">
-                                        <input value="Place order" type="submit">
+                                        <input value="Thanh toán" type="submit">
                                     </div>
                                 </div>
                             </div>

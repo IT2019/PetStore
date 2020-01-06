@@ -51,14 +51,18 @@
                                             <i class="fa fa-star"></i>
                                         </div>
                                         <div class="product-wid-price">
-                                            <ins>${pet.giatien}</ins> <del>${pet.giatien*1.1}</del>
+                                            <ins>Giá tiền: ${pet.giatien}</ins>
                                         </div>
                                         <div>
-                                            <li class="add-cart active"><a href="add-to-cart?code=${pet.id}">Add to cart</a></li>
+                                            <a href="add-to-cart?code=${pet.id}"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </c:forEach>
+                        <div class="row">
+                            <ul id="pagination"></ul>
+                        </div>
                     </div>
                 </div>
                 <script type="text/javascript">
@@ -87,10 +91,7 @@
                         });
                     });
                 </script>
-                <div class="row">
 
-                    <ul id="pagination"></ul>
-                </div>
 
             </div>
             </div>
