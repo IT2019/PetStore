@@ -127,5 +127,10 @@ public class HomeController {
 		model.addAttribute("pets",list1);
 		return "client/index";
 	}
-
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(HttpServletRequest request, @RequestParam(name = "code") String code ,Model model) {			
+		VatNuoiInfo vatnuoiInfo = vatnuoiDao.findById(Long.parseLong(code));
+		model.addAttribute("pet",vatnuoiInfo);
+		return "client/view_product";
+	}
 }
