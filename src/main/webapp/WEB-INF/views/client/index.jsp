@@ -67,6 +67,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </c:forEach>
                     </div>
                 </div>
                 <script type="text/javascript">
