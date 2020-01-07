@@ -6,9 +6,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-about-us">
-                            <h2>u<span>Stora</span></h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis
-                                sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                            <img src="${pageContext.request.contextPath}/template/client/img/logo.png">
                             <div class="footer-social">
                                 <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
                                 <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -56,23 +54,6 @@
                 </div>
             </div>
         </div>
-        <!-- End footer top area -->
-
-        <div class="footer-bottom-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-
-                    </div>
-
-                    <div class="col-md-4">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End footer bottom area -->
-
         <!-- Latest jQuery form server -->
         <script src="https://code.jquery.com/jquery.min.js"></script>
 

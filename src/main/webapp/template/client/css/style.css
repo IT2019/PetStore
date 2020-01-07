@@ -1,5 +1,4 @@
 @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
-
 .floatleft {
     float: left
 }
@@ -143,22 +142,22 @@ body {
 }
 
 .cart-amunt {
-    color: #f10f2e;
+    color: #fff;
     font-weight: 700;
 }
 
 .product-count {
-    background: none repeat scroll 0 0 #5a88ca;
+    background: none repeat scroll 0 0 #ca5a5a;
     border-radius: 50%;
     color: #fff;
     display: inline-block;
     font-size: 10px;
     height: 20px;
+    right: 10px;
     padding-top: 2px;
     position: absolute;
-    right: -0px;
     text-align: center;
-    top: -10px;
+    top: 10px;
     width: 20px;
 }
 
@@ -714,7 +713,7 @@ body {
 .footer-top-area {
     background: none repeat scroll 0 0 #333;
     color: #999;
-    padding: 35px 0 180px;
+    padding: 35px 0 80px;
 }
 
 .footer-bottom-area {
@@ -727,7 +726,6 @@ body {
 }
 
 .footer-wid-title {
-    font-family: raleway;
     font-size: 30px;
     font-weight: 100;
     color: #fff
@@ -1580,41 +1578,48 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 
 
 /* form search */
+
 .dropdown {
-    width:110px;
+    width: 110px;
     border: none;
     border-bottom: 1px dashed #000;
     margin-top: 10px;
-    outline:none;
+    outline: none;
     background: none;
-    font-size:15px;
+    font-size: 15px;
 }
-#searchform {
-    background: #d9d9d9;
-    overflow: hidden;
-    width: 430px;
-    height: 95px;
-    margin: 20px auto;
-    border-radius: 20px;
-}
-#btnsearch{
+
+#btnsearch {
     background: #015196;
     border: none;
     padding: 10px;
     color: white;
-    border-radius:20px;
-    margin-top:25px;
+    border-radius: 20px;
 }
-.lb{
+
+.lb {
     color: #015196;
     font-weight: bold;
     text-transform: uppercase;
 }
-#group1{
-    float: left;
-    margin: 20px 20px;
-  }
-#group2{
-    float: left;
-    margin: 20px 20px;
+#searchtext{
+    margin-top: 20px;
+    background: grey;
+    width: 600px;
+    height: 50px;
+    border-radius: 20px;
+}
+#nhap{
+    border: none;
+    outline: none;
+    margin-top: 3px;
+    margin-left: 4px;
+    width: 550px;
+    border-radius: 20px 0px 0px 20px;
+}
+#btnsearchtext{
+    border: none;
+    background: none;
+    color: white;
+    font-size: 20px;
 }
