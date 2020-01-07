@@ -45,11 +45,11 @@
                                                 <tbody>
                                                     <c:forEach items="${sessionScope.Cart.getCartLines()}" var="it" varStatus="i">
                                                         <tr>
-                                                            <td class="li-product-thumbnail"><a href="view-product?vatNuoiid=${it.getVatNuoiInfo().getId()}"><img
+                                                            <td class="li-product-thumbnail"><a href="detail?code=${it.getVatNuoiInfo().getId()}"><img
                                                             width="150px" height="150px"
                                                             src="<c:url value='/template/client/img/${it.getVatNuoiInfo().getHinhanh()}' />"
                                                             alt="Li's Product Image"></a></td>
-                                                            <td class="li-product-name"><a href="view-product?vatNuoiId=${it.getVatNuoiInfo().getId()}">${it.getVatNuoiInfo().getTenvatnuoi()}</a></td>
+                                                            <td class="li-product-name"><a href="detail?code=${it.getVatNuoiInfo().getId()}">${it.getVatNuoiInfo().getTenvatnuoi()}</a></td>
                                                             <td class="li-product-price"><span class="amount">${it.getVatNuoiInfo().getGiatien()}</span></td>
                                                             <td class="quantity">
                                                                 <div class="cart-plus-minus">

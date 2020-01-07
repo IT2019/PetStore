@@ -142,7 +142,7 @@ body {
 }
 
 .cart-amunt {
-    color: #f10f2e;
+    color: #fff;
     font-weight: 700;
 }
 
@@ -153,11 +153,11 @@ body {
     display: inline-block;
     font-size: 10px;
     height: 20px;
+    right: 10px;
     padding-top: 2px;
     position: absolute;
-    right: -0px;
     text-align: center;
-    top: -10px;
+    top: 10px;
     width: 20px;
 }
 
@@ -713,7 +713,7 @@ body {
 .footer-top-area {
     background: none repeat scroll 0 0 #333;
     color: #999;
-    padding: 35px 0 180px;
+    padding: 35px 0 80px;
 }
 
 .footer-bottom-area {
@@ -726,7 +726,6 @@ body {
 }
 
 .footer-wid-title {
-    font-family: raleway;
     font-size: 30px;
     font-weight: 100;
     color: #fff

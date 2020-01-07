@@ -4,16 +4,9 @@
             <!DOCTYPE html>
             <html lang="en">
             <jsp:include page="/WEB-INF/views/client/header.jsp" />
-
-
-
             <div>
-
-
                 <jsp:include page="/WEB-INF/views/client/menu.jsp" />
                 <jsp:include page="/WEB-INF/views/client/slide.jsp" />
-
-
                 <!-- filter-->
                 <div class="container" style="background-color: #d9d9d9; padding:20px">
 
@@ -53,8 +46,8 @@
                                 <div class="col-md-4 contentPage">
                                     <div class="single-product-widget">
                                         <div class="single-wid-product">
-                                            <a href="detail/?code=${pet.id}"><img src="${pageContext.request.contextPath}/template/client/img/${pet.hinhanh}" alt="" class="product-thumb"></a>
-                                            <h2><a href="detail/?code=${pet.id}">${pet.tenvatnuoi}</a></h2>
+                                            <a href="${pageContext.request.contextPath}/detail/?code=${pet.id}"><img src="${pageContext.request.contextPath}/template/client/img/${pet.hinhanh}" alt="" class="product-thumb"></a>
+                                            <h2><a href="${pageContext.request.contextPath}/detail/?code=${pet.id}">${pet.tenvatnuoi}</a></h2>
                                             <div class="product-wid-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -66,15 +59,17 @@
                                                 <ins>Giá tiền: ${pet.giatien}</ins>
                                             </div>
                                             <div>
-                                                <a href="add-to-cart?code=${pet.id}"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                                <a href="${pageContext.request.contextPath}/add-to-cart?code=${pet.id}"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </c:forEach>
-                            <div class="row">
-                                <ul id="pagination"></ul>
-                            </div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <ul id="pagination"></ul>
                         </div>
                     </div>
                     <script type="text/javascript">
