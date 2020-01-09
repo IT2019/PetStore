@@ -10,8 +10,12 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cntt.qnu.dao.VatNuoiDAO;
+import cntt.qnu.entity.DonHang;
+import cntt.qnu.entity.DongDH;
 import cntt.qnu.entity.LoaiVatNuoi;
 import cntt.qnu.entity.VatNuoi;
+import cntt.qnu.model.DonHangInfo;
+import cntt.qnu.model.DongDHInfo;
 import cntt.qnu.model.LoaiVatNuoiInfo;
 import cntt.qnu.model.VatNuoiInfo;
 
@@ -87,4 +91,48 @@ public class VatNuoiDAOImpl implements VatNuoiDAO{
 
 		 return list.get(0);
 	}
+
+	@Override
+	public List<VatNuoiInfo> timKiem(String key) {
+		Session session = sessionfactory.getCurrentSession();
+		String sql= " Select new " + VatNuoiInfo.class.getName() + "(v.id,v.tenvatnuoi,v.giatien,v.hinhanh,v.mota,v.idloai,v.soluong)" +
+				" from " + VatNuoi.class.getName() + " v " + "Where v.tenvatnuoi LIKE '%" + key + "%'";
+		Query query = session.createQuery(sql);
+		List<VatNuoiInfo> list= query.list();
+		return list;
+	}
+
+	@Override
+	public void themThongTinDonHang(DonHangInfo dh) {
+		Session session = sessionfactory.getCurrentSession();
+		DonHang dhentity= new DonHang();
+		dhentity.setId(dh.getId());
+		dhentity.setTennguoidat(dh.getTennguoidat());
+		dhentity.setSdt(dh.getSdt());
+		dhentity.setEmail(dh.getEmail());
+		dhentity.setNgaydat(dh.getNgaydat());
+		dhentity.setDiachigiao(dh.getDiachigiao());
+		session.persist(dhentity);
+	}
+
+	@Override
+	public int lastIdDH() {
+		Session session = sessionfactory.getCurrentSession();
+		String sql=" Select new " + DonHangInfo.class.getName() + "(h.id, h.tennguoidat, h.sdt, h.email, h.ngaydat, h.diachigiao)" +
+		" from " + DonHang.class.getName() + " h ";
+		Query query = session.createQuery(sql);
+		List<DonHangInfo> list= query.list();
+			
+
+		 return list.get(list.size()-1).getId();
+	}
+	@Override
+	public void themDongDH(int iddh, int idvatnuoi, int soluong){
+		Session session = sessionfactory.getCurrentSession();
+		DongDH ddhentity = new DongDH();
+		ddhentity.setIddh(iddh);
+		ddhentity.setIdvatnuoi(idvatnuoi);
+		ddhentity.setSoluong(soluong);
+		session.persist(ddhentity);
+		}
 }

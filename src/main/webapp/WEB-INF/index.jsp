@@ -4,8 +4,6 @@
 <html>
 	<body>
 		<h2>Hello World!</h2>
-		<c:forEach var="pet" items="${pets}" varStatus="status">
-			<h1>${pet.tenvatnuoi}</h1>
-		</c:forEach>	
+			<h1>${idne}</h1>
 	</body>
 </html>
