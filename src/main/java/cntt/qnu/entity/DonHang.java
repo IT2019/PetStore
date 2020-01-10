@@ -1,11 +1,15 @@
 package cntt.qnu.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Generated;
 
 
 @Entity
@@ -18,8 +22,10 @@ public class DonHang {
 	private Date ngaydat;
 	private String diachigiao;
 	
+	
 	@Id
 	@Column(name="id")
+	// @GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
 		return id;
 	}
@@ -61,5 +67,7 @@ public class DonHang {
 	public void setDiachigiao(String diachigiao) {
 		this.diachigiao = diachigiao;
 	}
+
+	
 	
 }

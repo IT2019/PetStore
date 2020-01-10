@@ -1,9 +1,15 @@
 package cntt.qnu.controller;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +17,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.SessionScope;
+
 import cntt.qnu.dao.VatNuoiDAO;
+import cntt.qnu.model.Cart;
 import cntt.qnu.model.CartInfo;
 import cntt.qnu.model.CustomerInfo;
+import cntt.qnu.model.DonHangInfo;
 import cntt.qnu.model.LoaiVatNuoiInfo;
 import cntt.qnu.model.VatNuoiInfo;
 
@@ -22,9 +31,11 @@ import cntt.qnu.model.VatNuoiInfo;
 public class HomeController {
 	@Autowired
 	private VatNuoiDAO vatnuoiDao;
+	private static Calendar cal;
 
 	@RequestMapping(value = {"/","/index"})
 	public String loadIndex(Model model) {
+
 		List<VatNuoiInfo> list= vatnuoiDao.showList();
 		List<LoaiVatNuoiInfo> loai= vatnuoiDao.loadLoai();
 		model.addAttribute("pets",list);
@@ -105,15 +116,42 @@ public class HomeController {
 		
 		CartInfo cartInfo = (CartInfo)session.getAttribute("Cart");
 		
-		CustomerInfo customerInfo = new CustomerInfo(name, address, email, phone);
+		// CustomerInfo customerInfo = new CustomerInfo(name, address, email, phone);
 		
-		cartInfo.setCustomerInfo(customerInfo);
+		// cartInfo.setCustomerInfo(customerInfo);
+
+		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
+		String ngay = getToday();
+		Date date=null;
+		try { 
+			date = ft.parse(ngay); 
+			
+		} catch (ParseException e) { 
+			System.out.println("Khong the parse duoc boi su dung " + ft); 
+		}
+		Random rand = new Random();
+		int iddh= rand.nextInt(1000);
+		DonHangInfo dh = new DonHangInfo(iddh, name, phone, email, date, address);
 		
-		//orderDAO.saveOrder(cartInfo);
+		vatnuoiDao.themThongTinDonHang(dh);
 		
+		// int iddh = vatnuoiDao.lastIdDH();
+		for (Cart list : cartInfo.getCartLines()) {
+			int id = list.getVatNuoiInfo().getId();
+			int soluong = list.getQuantity();
+			System.out.println(id +"-"+soluong);
+			vatnuoiDao.themDongDH(iddh, id, soluong);
+		}
+			
+
 		session.removeAttribute("Cart");
 		
 		return "redirect:/view-cart";
+	}
+
+	public static String getToday() {
+		cal = Calendar.getInstance();
+		return cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH);
 	}
 
 	@RequestMapping(value = "/getdata", method = RequestMethod.GET)
@@ -127,10 +165,22 @@ public class HomeController {
 		model.addAttribute("pets",list1);
 		return "client/index";
 	}
+
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(HttpServletRequest request,Model model) {
+		String key = request.getParameter("key");
+		List<VatNuoiInfo> list1= vatnuoiDao.timKiem(key);
+		List<LoaiVatNuoiInfo> listloai= vatnuoiDao.loadLoai();
+		model.addAttribute("loai",listloai);
+		model.addAttribute("pets",list1);
+		return "client/index";
+	}
+
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(HttpServletRequest request, @RequestParam(name = "code") String code ,Model model) {			
 		VatNuoiInfo vatnuoiInfo = vatnuoiDao.findById(Long.parseLong(code));
 		model.addAttribute("pet",vatnuoiInfo);
 		return "client/view_product";
 	}
+
 }

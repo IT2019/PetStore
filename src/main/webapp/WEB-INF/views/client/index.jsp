@@ -116,11 +116,19 @@
                         sendData();
 
                     });
+                    $('#btnsearchtext').on('click', function(e) {
+                        e.preventDefault();
+                        sendquery();
+                    });
                 });
 
                 function sendData() {
                     let loai = $('#loai').val();
                     let gia = $('#gia').val();
-                    window.location.href = "${pageContext.request.contextPath}/getdata/?loai=" + loai + "&gia=" + gia;
+                    window.location.href = "${pageContext.request.contextPath}/getdata?loai=" + loai + "&gia=" + gia;
+                }
+                function sendquery(){
+                    let key = $('#nhap').val();
+                    window.location.href = "${pageContext.request.contextPath}/search?key=" + key;
                 }
             </script>

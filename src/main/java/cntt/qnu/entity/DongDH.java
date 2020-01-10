@@ -12,7 +12,7 @@ public class DongDH {
 	private int idvatnuoi;
 	private int iddh;
 	private int soluong;
-	private int trangthai;
+	// private int trangthai;
 	
 	@Id
 	@Column(name="id")
@@ -43,13 +43,13 @@ public class DongDH {
 	public void setSoluong(int soluong) {
 		this.soluong = soluong;
 	}
-	@Column(name="trang_thai")
-	public int getTrangthai() {
-		return trangthai;
-	}
-	public void setTrangthai(int trangthai) {
-		this.trangthai = trangthai;
-	}
+	// @Column(name="trang_thai")
+	// public int getTrangthai() {
+	// 	return trangthai;
+	// }
+	// public void setTrangthai(int trangthai) {
+	// 	this.trangthai = trangthai;
+	// }
 	
 	
 }
