@@ -2,7 +2,7 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
         <%@ page import="java.util.Random,java.text.*"%>
             <!DOCTYPE html>
-            <html lang="en">
+            <html lang="vi">
             <jsp:include page="/WEB-INF/views/client/header.jsp" />
             <div>
                 <jsp:include page="/WEB-INF/views/client/menu.jsp" />

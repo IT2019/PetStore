@@ -1623,3 +1623,6 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
     color: white;
     font-size: 20px;
 }
+.bang{
+    margin: 0px 20px;
+}

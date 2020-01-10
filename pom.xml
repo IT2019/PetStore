@@ -147,7 +147,25 @@
 			<version>2.4.2</version>
 		</dependency>
 
+		<!-- send email -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>5.0.2.RELEASE</version>
+    	</dependency>
+    
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+	
 	</dependencies>
+	<properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+      <java.version>1.8</java.version>
+   </properties>
   <build>
     <finalName>PetStoreWeb</finalName>
     <plugins>

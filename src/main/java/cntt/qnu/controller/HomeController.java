@@ -12,25 +12,36 @@ import javax.servlet.http.HttpSession;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.SessionScope;
 
+import cntt.qnu.dao.MailService;
 import cntt.qnu.dao.VatNuoiDAO;
+import cntt.qnu.entity.DongDH;
 import cntt.qnu.model.Cart;
 import cntt.qnu.model.CartInfo;
 import cntt.qnu.model.CustomerInfo;
 import cntt.qnu.model.DonHangInfo;
+import cntt.qnu.model.DongDHInfo;
 import cntt.qnu.model.LoaiVatNuoiInfo;
+import cntt.qnu.model.Mail;
 import cntt.qnu.model.VatNuoiInfo;
 
 @Controller
 public class HomeController {
 	@Autowired
 	private VatNuoiDAO vatnuoiDao;
+
+	@Autowired
+	private MailService mailService;
+	
 	private static Calendar cal;
 
 	@RequestMapping(value = {"/","/index"})
@@ -183,4 +194,28 @@ public class HomeController {
 		return "client/view_product";
 	}
 
+	@RequestMapping(value = "/admin")
+	public String admin(Model model) {
+		List<DongDHInfo> list = vatnuoiDao.acceptAdmin();
+		model.addAttribute("rowddh", list);
+		return "admin";
+	}
+
+	@RequestMapping(value = "/updatestatus/{id}", method = RequestMethod.GET)
+	public String update(@PathVariable("id") int id) {
+		System.out.println("id cua ban la: "+id);
+		
+		DonHangInfo dh = vatnuoiDao.getDH(vatnuoiDao.getDDH(id).getIddh());
+		vatnuoiDao.updateStatus(vatnuoiDao.getDDH(id));
+		Mail mail = new Mail();
+		mail.setMailFrom("congchuangutrongrung09@gmail.com");
+		mail.setMailTo(dh.getEmail());
+		mail.setMailSubject("PetStore");
+		mail.setMailContent("Cảm ơn "+dh.getTennguoidat()+" đã ủng hộ. Đơn hàng đặt "+ vatnuoiDao.getDDH(id).getSoluong()+
+		" "+ vatnuoiDao.getTen(vatnuoiDao.getDDH(id).getIdvatnuoi()).getTenvatnuoi() + " vào ngày " + dh.getNgaydat() + " đang được giao." );
+		mailService.sendEmail(mail);
+		return "redirect:/admin";
+	}
+
+	
 }

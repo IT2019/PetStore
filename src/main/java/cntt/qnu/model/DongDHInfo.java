@@ -5,18 +5,18 @@ public class DongDHInfo {
 	private int idvatnuoi;
 	private int iddh;
 	private int soluong;
-	// private int trangthai;
+	private int trangthai;
 	public DongDHInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public DongDHInfo(int id, int idvatnuoi, int iddh, int soluong) {
+	public DongDHInfo(int id, int idvatnuoi, int iddh, int soluong, int trangthai) {
 		super();
 		this.id = id;
 		this.idvatnuoi = idvatnuoi;
 		this.iddh = iddh;
 		this.soluong = soluong;
-		// this.trangthai = trangthai;
+		this.trangthai = trangthai;
 	}
 	public int getId() {
 		return id;
@@ -42,10 +42,10 @@ public class DongDHInfo {
 	public void setSoluong(int soluong) {
 		this.soluong = soluong;
 	}
-	// public int getTrangthai() {
-	// 	return trangthai;
-	// }
-	// public void setTrangthai(int trangthai) {
-	// 	this.trangthai = trangthai;
-	// }
+	public int getTrangthai() {
+		return trangthai;
+	}
+	public void setTrangthai(int trangthai) {
+		this.trangthai = trangthai;
+	}
 }

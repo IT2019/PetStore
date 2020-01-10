@@ -1,4 +1,5 @@
 package cntt.qnu.config;
+
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -12,12 +13,16 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import cntt.qnu.dao.MailService;
 import cntt.qnu.dao.VatNuoiDAO;
+import cntt.qnu.dao.impl.MailServiceImpl;
 import cntt.qnu.dao.impl.VatNuoiDAOImpl;
 
 @Configuration
@@ -25,11 +30,12 @@ import cntt.qnu.dao.impl.VatNuoiDAOImpl;
 @EnableTransactionManagement
 //Load to Environment.
 @PropertySource("classpath:ds-hibernate-cfg.properties")
+//@PropertySource("classpath:ds-mail-cfg.properties")
 public class ApplicationContextConfig {
 	@Bean(name = "viewResolver")
 	public InternalResourceViewResolver getViewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setPrefix("/WEB-INF/views/");
+		viewResolver.setPrefix("/WEB-INF/views/"); 
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}
@@ -47,6 +53,25 @@ public class ApplicationContextConfig {
 		dataSource.setPassword(env.getProperty("ds.password"));
 
 		return dataSource;
+	}
+	
+	@Bean
+	public JavaMailSender getMailSender(){
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+
+		mailSender.setHost(env.getProperty("spring.mail.host"));
+        mailSender.setPort(Integer.valueOf(env.getProperty("spring.mail.port")));
+        mailSender.setUsername(env.getProperty("spring.mail.username"));
+        mailSender.setPassword(env.getProperty("spring.mail.password"));
+ 
+        Properties javaMailProperties = new Properties();
+        javaMailProperties.put("mail.smtp.starttls.enable", "true");
+        javaMailProperties.put("mail.smtp.auth", "true");
+        javaMailProperties.put("mail.transport.protocol", "smtp");
+        javaMailProperties.put("mail.debug", "true");
+ 
+        mailSender.setJavaMailProperties(javaMailProperties);
+        return mailSender;
 	}
 
 	@Autowired
@@ -91,8 +116,10 @@ public class ApplicationContextConfig {
 	public VatNuoiDAO showList() {
 		return new VatNuoiDAOImpl();
 	}
-	// @Bean(name = "pet")
-	// public VatNuoiDAO findByID() {
-	// 	return new VatNuoiDAOImpl();
-	// }
+
+	
+	@Bean(name = "mail")
+	public MailService send() {
+		return new MailServiceImpl();
+	}
 }

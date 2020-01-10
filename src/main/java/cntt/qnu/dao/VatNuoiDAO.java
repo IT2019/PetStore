@@ -21,4 +21,9 @@ public interface VatNuoiDAO {
 	public void themThongTinDonHang(DonHangInfo dh);
 	public void themDongDH(int iddh, int idvatnuoi, int soluong);
 	public int lastIdDH();
+	public List<DongDHInfo> acceptAdmin();
+	public DongDHInfo getDDH(int id);
+	public void updateStatus(DongDHInfo ddh);
+	public DonHangInfo getDH(int id);
+	public VatNuoiInfo getTen(int id);
 }
