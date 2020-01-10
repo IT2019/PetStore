@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-lg-7">
                     <div id="searchtext">
-                        <input type="text" id="nhap" placeholder="Nhập thông tin cần tìm"/>
+                        <input type="text" id="nhap" placeholder="Nhập thông tin cần tìm" />
                         <button id="btnsearchtext"><i class="fa fa-search"></i></button>
                     </div>
                 </div>

@@ -1,10 +1,16 @@
+var base_url = "http://localhost:8090/PetStoreWeb/";
 jQuery(document).ready(function($) {
 
     // jQuery sticky Menu
 
     $(".mainmenu-area").sticky({ topSpacing: 0 });
 
+    $(".add_to_cart_button").click(function(e) {
+        e.preventDefault();
+        $("#quantity").val();
+        window.location.href = base_url + 'add-to-cart?code=' + $(".add_to_cart_button").val() + '&quantity=' + $("#quantity").val();
 
+    });
     $('.product-carousel').owlCarousel({
         loop: true,
         nav: true,

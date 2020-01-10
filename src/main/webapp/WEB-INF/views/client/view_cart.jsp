@@ -53,7 +53,7 @@
                                                             <td class="li-product-price"><span class="amount">${it.getVatNuoiInfo().getGiatien()}</span></td>
                                                             <td class="quantity">
                                                                 <div class="cart-plus-minus">
-                                                                    <input class="cart-plus-minus-box" style="width: auto;" value="${it.getQuantity()}" type="number" name="quantity" required="required">
+                                                                    <input class="cart-plus-minus-box" style="width: auto;" value="${it.getQuantity()}" type="number" name="quantity" required="required" min="1" step="1">
                                                                 </div>
                                                             </td>
                                                             <td class="product-subtotal"><span class="amount">${it.getVatNuoiInfo().getGiatien()

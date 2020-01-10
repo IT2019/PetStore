@@ -30,14 +30,14 @@
                                                 <ins>$${pet.giatien}</ins>
                                             </div>
 
-                                            <form action="" class="cart">
-                                                <div class="quantity">
-                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                                                </div>
-                                                <a href="${pageContext.request.contextPath}/add-to-cart?code=${pet.id}">
-                                                    <button class="add_to_cart_button" type="">Thêm vào giỏ hàng</button>
-                                                </a>
-                                            </form>
+
+                                            <div class="quantity">
+                                                <input id="quantity" type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                            </div>
+                                            <a href="${pageContext.request.contextPath}/add-to-cart?code=${pet.id}">
+                                                <button class="add_to_cart_button" value="${pet.id}">Thêm vào giỏ hàng</button>
+                                            </a>
+
 
                                             <div class="product-inner-category">
                                                 <p>Thông tin thú cưng:</p><span><p>${pet.mota}</p></span>

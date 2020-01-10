@@ -74,7 +74,7 @@
                     </div>
                     <script type="text/javascript">
                         $(function() {
-                            var pageSize = 9;mv
+                            var pageSize = 9;
                             showPage = function(page) {
                                 $(".contentPage").hide();
                                 $(".contentPage").each(function(n) {
